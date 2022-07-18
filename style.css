@@ -55,7 +55,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 /* Step 6: Select div elements with class of alert and give it:
@@ -98,7 +97,7 @@ body {
   - Border radius of 50px
 */
 
-.alert__container::before {
+div[class=alert__container]::before {
   content: " ";
   min-width: 6px;
   background-color: #0090d7;
@@ -110,12 +109,13 @@ body {
   - Background color of #e8ac00 if inside div element with warning class
 */
 
-/* .alert__container::before {
-  content: " ";
-  min-width: 6px;
+div[class~="danger"]>div::before {
   background-color: #d20d38;
-  border-radius: 50px;
-} */
+}
+
+div[class~="warning"]>div::before {
+  background-color: #e8ac00;
+}
 
 /* Step 11: Select elements with class of alert__details: 
   - Give it top and bottom padding of 12px
@@ -142,7 +142,7 @@ p:first-child {
   - Not-allowed cursor
 */
 
-button.warning {
+button:disabled {
   color: grey;
   cursor: not-allowed;
 }
@@ -156,9 +156,11 @@ button.warning {
 button.info {
   color: #0090d7;
 }
+
 button.danger {
   color: #d20d38;
 }
+
 button.warning {
   color: #e8ac00;
 }
@@ -168,7 +170,7 @@ button.warning {
   - Font style of italic
 */
 
-#container > p {
+div>p {
   margin-top: 40px;
   font-style: italic;
 }
@@ -178,4 +180,7 @@ button.warning {
  - Background color of #393939
 */
 
-h3.[dark-mode]
+h3[class="dark-mode"]~div {
+  color: white;
+  background-color: #393939;
+}
